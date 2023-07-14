@@ -1,0 +1,30 @@
+# These are questions and answers involving a database digital media store Chinook.
+# This includes tables for artists, albums, media tracks, invoices, and customers.
+
+#1. Show Customers (their full names, customer ID, and country) who are not in the US.
+Select LastName, FirstName, CustomerId, Country
+From chinook.customers
+Where Country <> "USA"
+
+#2. Show only the Customers from Brazil.
+Select *
+From chinook.customers
+Where Country = "Brazil"
+
+#3. Find the Invoices of customers who are from Brazil. The resulting table should show the customer's full name, Invoice ID, Date of the invoice, and billing country.
+Select cust.FirstName, cust.LastName, inv.invoiceid, inv.BillingCountry, inv.InvoiceDate
+From chinook.customers cust
+Left Join chinook.invoices inv
+On cust.CustomerId = inv.CustomerId
+Where inv.BillingCountry = "Brazil"
+
+#4. Show the Employees who are Sales Support Agents.
+Select *
+From chinook.employees
+Where Title = "Sales Support Agent"
+
+#5. Find a unique/distinct list of billing countries from the Invoice table.
+Select Distinct BillingCountry
+From chinook.invoices
+
+#6. 
